@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>🕑 Clock</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1>This is my javascript project clock
+    </h1>
+<section id="clock">
+<p id="timeShownHere" class="time" onload="displayTime()"></p>
+</section>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: linear-gradient(to right, #030303, #000080);
+        color: white;
+        font-family: 'SF Digital Readout';
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 60px;
+        text-transform: uppercase;
+       
+    }
+
+    #clock {
+        vertical-align: middle;
+        display: inline;
+        margin-top: 200px; 
+        width: 120px;
+       }
+
+       @media screen and (max-width: 600px) {
+        #clock {
+            width: 60%;
+            
+        }
+        h1 {
+            font-size: 20px;
+            text-align: center;
+        }
+       }
+
+    .time {
+        background-color: black;
+        width: 300px;
+        height: 70px;
+        border-color: black;
+        margin: 60px;
+        margin: 0 auto;
+        font-size: 50px;
+        text-align: center;
+        color: blue;
+        box-shadow: 6px 6px 5px rgb(57, 43, 250);
+        animation: glow 1s infinite;
+    }
+
+    @keyframes glow {
+        0% {
+            text-shadow: none;
+        }
+
+        25% {
+            text-shadow: 2px 2px #5c66f8;
+        }
+
+        50% {
+            text-shadow: #abaaff;
+        }
+
+        75% {
+            text-shadow: 2px 2px #5c66f8;
+        }
+
+        100% {
+            text-shadow: none;
+        }
+        
+    }
+
+
+</style>
+<script>
+  function displayTime() {
+var date = new Date();
+var hh = date.getHours();
+var mm = date.getMinutes();
+var ss = date.getSeconds();
+var meridian = "AM";
+if(hh == 0) {
+    hh = 00
+    meridian = "AM"
+}
+if(hh == 12) {
+    meridian  = "PM";
+}
+
+if(hh > 12) {
+    meridian = "PM";
+    hh = hh - 12;
+}
+
+
+hh = (hh < 10) ? "0" + hh : hh;
+mm = (mm < 10) ? "0" + mm : mm;
+ss = (ss < 10) ? "0" + ss : ss;
+
+var time = hh + " : " + mm + " : " + ss + " " + meridian;
+document.getElementById("timeShownHere").innerText = time;
+document.getElementById("timeShownHere").textContent = time;
+setTimeout(displayTime, 1000);
+ }
+ displayTime();
+    </script>
+    </body>
+</html>
